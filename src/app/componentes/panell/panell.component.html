@@ -1,0 +1,14 @@
+<div [@simpleFadeAnimation]="'in'" class="open-close-container">
+<div class="panel panel-default">
+    
+    <div class="panel-body">
+        <!-- <form [formGroup]="extraForm"> -->
+            <div *ngFor="let extra of presupuesto.getExtras() let i = index;">
+                <!-- <input formControlName="cantidad_{{i}}" [(ngModel)]="extra.cant"  type="number" #Extra id={{i}} (change)="ExtrasUpdate(i,Extra.value)"> -->
+                <app-calculate-input [presuExtra]="extra" [index]="i" (OnExtraschangeChild)="ExtrasUpdate(idItem,cant)"></app-calculate-input>
+                <!-- <div *ngIf="extraForm.get('cantidad_{{i}}')?.invalid || this.extra.cant<0"><small>Es necesario introducir un valor numerico mayor o igual a cero.</small></div> -->
+            </div>
+        <!-- </form> -->
+    </div>
+  </div>
+</div>

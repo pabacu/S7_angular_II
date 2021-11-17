@@ -1,0 +1,25 @@
+<form [formGroup]="extraForm">
+<!-- Commented because it was done for the previous exercise -->
+<!-- <input value="{{presuExtra.cant}}" formControlName="cantidad_{{index}}" [(ngModel)]="presuExtra.cant"  type="number" #PresuExtra id="{{index}}" (change)="ExtrasUpdateChild(index,PresuExtra.value)">
+<div *ngIf="extraForm.get('cantidad_{{i}}')?.invalid || this.presuExtra.cant<0"><small>Es necesario introducir un valor numerico mayor o igual a cero.</small></div> -->
+
+<div class="container">
+    <small>{{presuExtra.titulo}}</small>
+    <div class="row">
+      <div class="col-sm-2">
+        
+      </div>
+      <div class="col-sm-8 calc">
+        <button class="btn btn-warning" (click)="opera(index, -1)"> - </button>
+        <input value="{{presuExtra.cant}}" formControlName="cantidad_{{index}}" [(ngModel)]="presuExtra.cant" class="form-control text-center" #PresuExtra id="{{index}}" (change)="ExtrasUpdateChild(index,PresuExtra.value)" type="number" data-slider-min="0" data-slider-max="99" data-slider-step="1" data-slider-value="0" /> 
+        <button class="btn btn-warning" (click)="opera(index, 1)"> + </button>
+        <button class="btn btn-secondary  btn-circle ms-1" (click)="openModal('Introduce un ' + presuExtra.titulo +' que tendrá tu web.')"> i </button>
+      </div>
+      <div class="col-sm-2">
+        
+      </div>
+      <div *ngIf="extraForm.get('cantidad_{{i}}')?.invalid || this.presuExtra.cant<0"><small>Es necesario introducir un valor numerico mayor o igual a cero.</small></div>
+    </div>
+  </div>
+  
+</form>
