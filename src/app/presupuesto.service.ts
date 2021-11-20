@@ -10,7 +10,13 @@ export class PresupuestoService {
   public presupuesto:PresupuestoClass;
 
   constructor() {
+    const localData = this.getData();
+    if(localData != null && localData.length > 0 )
+    {
+      this.presupuestos = this.satinize(JSON.parse(localData));
+    }
     this.presupuesto = new PresupuestoClass(1,new Date(),'', 0, '');
+
    }
 
   get(): Array<PresupuestoClass> {
@@ -62,6 +68,28 @@ export class PresupuestoService {
   {
     this.presupuestos.push(presu);
     this.presupuesto = new PresupuestoClass(this.next(),new Date(),'', 0, '');
+    this.setData();
   }
+
+  setData() {
+    const jsonData = JSON.stringify(this.presupuestos)
+    localStorage.setItem('presupuestos', jsonData)
+ }
+ 
+ getData() {
+    return localStorage.getItem('presupuestos')
+ }
+ 
+ removeData(key: string) {
+    localStorage.removeItem(key)
+ }
+
+ satinize(presupuestos:Array<PresupuestoClass>):Array<PresupuestoClass>
+ {
+  presupuestos.forEach(element => {
+    element.fecha = new Date(element.fecha);
+  });
+  return presupuestos;
+ }
 
 }
