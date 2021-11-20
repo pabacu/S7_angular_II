@@ -11,6 +11,8 @@ import { PanellComponent } from './componentes/panell/panell.component';
 import { CalculateInputComponent } from './componentes/calculate-input/calculate-input.component';
 import { StartComponent } from './componentes/start/start.component';
 import { ModalComponent } from './componentes/modal/modal.component';
+import { FormsModule } from '@angular/forms';
+import { PressupostListComponent } from './componentes/pressupost-list/pressupost-list.component';
 
 const appRoutes:Routes=[
   {path:'', component: StartComponent},
@@ -26,7 +28,8 @@ const appRoutes:Routes=[
     PanellComponent,
     CalculateInputComponent,
     StartComponent,
-    ModalComponent
+    ModalComponent,
+    PressupostListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ const appRoutes:Routes=[
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule, 
+    FormsModule
   ],
   entryComponents:[
     ModalComponent

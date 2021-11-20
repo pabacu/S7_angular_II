@@ -1,0 +1,42 @@
+<div *ngIf="presupuestos.length>0">
+  <h6>Pressupostos</h6>
+  <div class="row">
+    <div class="col-12">
+      <small>Utilitza els filtres opcionals:</small>
+      <br/>
+      <div class="btn-group mb-2" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-primary" (click)="ordenraAz()">[A-z]</button>
+        <button type="button" class="btn btn-outline-primary" (click)="ordenarfecha()">Data</button>
+        <button type="button" class="btn btn-outline-primary" (click)="ordenarReset()">Reiniciar ordre</button>
+      </div>
+      <br/>
+      <div class="input-group">
+        <span class="input-group-text">Cercar</span>
+        <input type="text" class="form-control" placeholder="introdueix descripció..." aria-label="cercar" id="search"
+          name="search" #search (keyup)="buscarDescripcion(search.value)">
+      </div>
+    </div>
+  </div>
+  <br/>
+  <table data-toggle="table" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Data</th>
+        <th>Descripció</th>
+        <th>Client</th>
+        <th>Preu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let presu of presupuestos let i = index;">
+        <th>{{presu.id}}</th>
+        <th> {{presu.fecha.getDate()}}/{{presu.fecha.getMonth()+1}}/{{presu.fecha.getFullYear()}}</th>
+        <th> {{presu.descripcion}} </th>
+        <th> {{presu.cliente}} </th>
+        <th> {{presu.total}}</th>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -34,6 +34,13 @@ export class HomeComponent implements OnInit {
     this.presuService.calcular(elements);      
   }
 
+  reiniciar():void{
+    let elements = document.querySelectorAll<HTMLInputElement>("input[type='checkbox']:checked");
+    elements.forEach(element => {
+      element.checked = false;
+    });
+  }
+
   calcularExtra(extra:{ id: number, cant: string}){
     this.presupuesto.setExtras(extra.id, extra.cant);
     this.calcular();
@@ -60,7 +67,12 @@ export class HomeComponent implements OnInit {
     this.renderer2.addClass(this.isWebchecked.nativeElement, "hide");
   }
 
-  
+  save(presu:PresupuestoClass):void{
+    this.presuService.save(presu);
+    this.ngOnInit();
+    this.reiniciar();
+    this.calcular();
+  }
 
 
 }

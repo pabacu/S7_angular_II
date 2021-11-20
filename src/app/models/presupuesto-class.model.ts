@@ -4,19 +4,23 @@ export class PresupuestoClass implements Presupuesto {
    fecha: Date;
    descripcion: string; 
    total: number;
+   cliente: string;
+
    private extras: Array<{ titulo: string, cant: number, precio: number }> = [];
 
-   constructor(id: number, fecha: Date, descripcion: string, total: number) {
+   constructor(id: number, fecha: Date, descripcion: string, total: number, cliente: string) {
     this.id = id;
     this.fecha = fecha;
     this.descripcion = descripcion;
     this.total = total;
+    this.cliente = cliente;
     this.extras = [
       { titulo: "Número de páginas", cant: 1, precio: 30 },
       { titulo: "Número de idiomas.", cant: 1, precio: 30 }
       //Add more extras if you needed
     ];
   }
+  
 
   public get(): PresupuestoClass {
     return this;

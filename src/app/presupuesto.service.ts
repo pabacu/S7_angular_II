@@ -1,4 +1,3 @@
-
 import { PresupuestoClass } from './models/presupuesto-class.model';
 import { Injectable } from '@angular/core';
 
@@ -11,11 +10,15 @@ export class PresupuestoService {
   public presupuesto:PresupuestoClass;
 
   constructor() {
-    this.presupuesto = new PresupuestoClass(1,new Date(),'', 0);
+    this.presupuesto = new PresupuestoClass(1,new Date(),'', 0, '');
    }
 
   get(): Array<PresupuestoClass> {
-    return this.presupuestos;
+    return this.presupuestos.sort((a, b) => (a.id < b.id ? -1 : 1));;
+  }
+
+  next():number{
+    return this.presupuestos.length+1;
   }
 
   calcular(elements:NodeListOf<HTMLInputElement>): void{
@@ -53,6 +56,12 @@ export class PresupuestoService {
       totalE += element.cant * element.precio;
     });
     return totalE;
+  }
+
+  public save(presu:PresupuestoClass)
+  {
+    this.presupuestos.push(presu);
+    this.presupuesto = new PresupuestoClass(this.next(),new Date(),'', 0, '');
   }
 
 }

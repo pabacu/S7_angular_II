@@ -2,13 +2,14 @@
   <div class="row">
     <div class="col-6">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="500" name="web" id="web" (click)="calcular()" (change)="toogle()">
+        <input class="form-check-input" type="checkbox" value="500" name="web" id="web" (click)="calcular()"
+          (change)="toogle()">
         <label class="form-check-label" for="web">
           Pàgina web (500€)
         </label>
         <div #WebCheked *ngIf="showMore">
           <app-panell [presupuesto]="presupuesto" (OnExtraschange)="calcularExtra($event)"></app-panell>
-      </div>
+        </div>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="300" name="seo" id="seo" (click)="calcular()">
@@ -22,13 +23,35 @@
           Google Ads (200€)
         </label>
       </div>
+      <div class="row">
+        <div class="col-6">
+          <h6>Preu: {{presupuesto.getTotal()}}</h6>
+          <!-- <app-item-output (OnExtraschange)="calcularExtra($event)"></app-item-output> -->
+        </div>
+      </div>
+      <div class="row">
+        <label class="form-check-label" for="descripcion">Descripció:</label>
+        <div class="col-6">   
+          <input value="{{presupuesto.descripcion}}" name="descripcion" id="descripcion" type="text"
+            [(ngModel)]="presupuesto.descripcion" />
+        </div>
+      </div>
+      <div class="row">
+        <label class="form-check-label" for="descripcion">Client:</label>
+        <div class="col-6">
+          <input value="{{presupuesto.cliente}}" name="cliente" id="cliente" type="text"
+            [(ngModel)]="presupuesto.cliente" />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <button class="btn btn-primary text-center" [disabled]="presupuesto.total === 0" (click)="save(presupuesto)">Guardar</button>
+        </div>
+      </div>
     </div>
-    <div class="col-6"></div>
-  </div>
-  <div class="row">
     <div class="col-6">
-      <h6>Preu: {{presupuesto.getTotal()}}</h6>
-      <!-- <app-item-output (OnExtraschange)="calcularExtra($event)"></app-item-output> -->
+      <app-pressupost-list [presupuestos]="presupuestos"></app-pressupost-list>
     </div>
   </div>
 </div>

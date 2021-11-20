@@ -3,4 +3,5 @@ export interface Presupuesto {
     fecha: Date;
     descripcion: string; 
     total: number;
+    cliente: string;
 }
