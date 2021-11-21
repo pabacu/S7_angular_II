@@ -5,6 +5,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Features:
 NgModel, directives, services, popup, animations...
 
+## Route compartir presupuestos:
+http://localhost:4200/Home?order=popular&filter=new&paginaWeb=true&campaniaSeo=true&campaniaAds=true&nPaginas=2&nIdiomas=4
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

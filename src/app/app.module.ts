@@ -16,7 +16,8 @@ import { PressupostListComponent } from './componentes/pressupost-list/pressupos
 
 const appRoutes:Routes=[
   {path:'', component: StartComponent},
-  {path:'Home', component: HomeComponent}
+  {path:'Home', component: HomeComponent},
+  {path:'Home/:total', component: HomeComponent}
   
   ];
   
